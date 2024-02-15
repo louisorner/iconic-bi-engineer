@@ -1,0 +1,106 @@
+version: 2
+
+models:
+    - name: stg_interactions
+      description: "Interactions"
+      columns:
+          - name: item_id
+            description: "Unique ID of the product and is a not null column"
+            constraints:
+              - type: not_null
+          - name: user_id
+            description: "Unique ID of the user and is a not null column"
+            constraints:
+              - type: not_null
+          - name: event_type
+            description: "Different events such as ProductViewed,ProductAdded,CartViewed,CheckoutStarted,OrderCompleted happening within the website"
+          - name: timestamp
+            description: "Timestamp during which the events have occured"
+          - name: discount
+            description: "Discount if any has been applied on the orders completed"
+
+    - name: stg_products
+      description: "Products"
+      columns:
+        - name: id
+          description: "Unique ID of the product and is a not null column"
+          constraints:
+            - type: not_null
+        - name: url
+          description: "url link to the product"
+        - name: name
+          description: "name of the product"
+        - name: category
+          description: "category to which the product belongs to"          
+        - name: style
+          description: "style to which the product belongs to"
+        - name: description
+          description: "description of the product"
+        - name: price
+          description: "price of the product"
+        - name: image
+          description: "image of the product"
+        - name: gender_affinity
+          description: "gender affinity of the product"
+        - name: current_stock
+          description: "current stock availability of the product. Is always a positive value"
+          constraints:
+            - type: not_null
+            
+
+    - name: stg_users
+      description: "Users"
+      columns:
+        - name: id
+          description: "Unique ID of the user and is a not null column"
+          constraints:
+            - type: not_null
+        - name: username
+          description: "Username of the user"
+        - name: email
+          description: "email id of the user"
+        - name: first_name
+          description: "first name of the user"          
+        - name: last_name	
+          description: "last name of the user"
+        - name: address1
+          description: "address1 of user"
+        - name: city
+          description: "city of user"
+        - name: state
+          description: "state of user"
+        - name: zipcode
+          description: "zipcode of user"
+        - name: country
+          description: "country of user"
+        - name: age
+          description: "age of the user"
+        - name: gender
+          description: "gender of the user"
+        - name: persona
+          description: "persona to which the user belongs to"
+        - name: discount_persona
+          description: "discount persona of the user"
+
+    - name: stg_interactions_missing_user
+      description: "Interactions with data quality issue of not having a user assigned"
+      columns:
+          - name: item_id
+            description: "Unique ID of the product and is a not null column"
+            constraints:
+              - type: not_null
+          - name: event_type
+            description: "Different events such as ProductViewed,ProductAdded,CartViewed,CheckoutStarted,OrderCompleted happening within the website"
+          - name: timestamp
+            description: "Timestamp during which the events have occured"
+          - name: discount
+            description: "Discount if any has been applied on the orders completed"
+
+sources:
+  - name: biengineer
+    #database: iconic-interview-20240213
+    schema: biengineer  
+    tables:
+      - name: raw-products
+      - name: raw-interactions
+      - name: raw-users
