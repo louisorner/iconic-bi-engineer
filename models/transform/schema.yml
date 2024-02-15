@@ -1,0 +1,95 @@
+version: 2
+
+models:
+    - name: user_journey
+      description: "User Journey"
+      columns:
+          - name: user_id
+            description: "Unique_Id of the user. It is the Primary Key of the table and only contains NOT NULL values"
+            constraints:
+              - type: primary_key
+              - type: not_null
+          - name: username
+            description: "Username for the user"
+          - name: email
+            description: "email_id of the user"
+          - name: first_name
+            description: "first name of the user"
+          - name: last_name
+            description: "last name of the user"
+          - name: address1
+            description: "address information of the user - obtained from the addresses column in the users.csv file"
+          - name: country
+            description: "country information of the user - obtained from the addresses column in the users.csv file"
+          - name: city
+            description: "city information of the user - obtained from the addresses column in the users.csv file"
+          - name: state
+            description: "state information of the user - obtained from the addresses column in the users.csv file"
+          - name: zipcode
+            description: "Zipcode information of the user - obtained from the addresses column in the users.csv file"
+          - name: total_orders
+            description: "Total orders placed by the user"
+
+    - name: transaction_journey
+      description: "Transaction Journey"
+      columns:
+        - name: item_id
+          description: "Unique ID of the product. Not NULL column"
+          constraints:
+            - type: not_null
+        - name: user_id
+          description: "Unique ID of the User. Not NULL column"
+          constraints:
+            - type: not_null
+        - name: product_name
+          description: "Name of the product"
+        - name: product_category
+          description: "Category to which the product belongs to"          
+        - name: product_viewed
+          description: "Date time when the product was viewed by the user"
+        - name: product_added
+          description: "Date time when the product was added by the user"
+        - name: cart_viewed
+          description: "Date time when the cart was viewed by the user"
+        - name: checkout_started
+          description: "Date time when the checkout was started by the user"
+        - name: order_completed
+          description: "Date time when the order was completed by the user"
+        - name: discount
+          description: "True or False column to indicate if a discount was applied to the product or not"
+          data_type: bool
+        - name: price
+          description: "price of the product"
+
+    - name: Summary
+      description: "Summary"
+      columns:
+        - name: product_category
+          description: "Category to which the product belongs to"
+        - name: total_products_viewed
+          description: "Total product view events which happened within the category"
+        - name: total_products_added
+          description: "Total product add events which happened within the category"
+        - name: total_cart_viewed
+          description: "Total cart view events which happened within the category"          
+        - name: total_checkout_started	
+          description: "Total checkout start events which happened within the category"
+        - name: total_orders_completed
+          description: "Total order completed events which happened within the category"
+        - name: total_interactions
+          description: "Total Interactions which happened within the category"
+        - name: total_orders
+          description: "Total Orders created for the category"
+        - name: total_customers_ordered
+          description: "Total customers who ordered products of the particular category"
+        - name: total_revenue
+          description: "Total revenue obtained for the particular category"
+
+sources:
+  - name: dbt_biengineer
+    #database: iconic-interview-20240213
+    schema: dbt_biengineer  
+    tables:
+      - name: stg_interactions
+      - name: stg_products
+      - name: stg_users
