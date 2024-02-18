@@ -25,6 +25,7 @@ SELECT
     , MAX(case when i.event_type = 'CartViewed' then i.timestamp end) as cart_viewed
     , MAX(case when i.event_type = 'CheckoutStarted' then i.timestamp end) as checkout_started
     , MAX(case when i.event_type = 'OrderCompleted' then i.timestamp end) as order_completed
+    -- TODO fix discount calc to refer to the highest event in hierarchy
     , MAX(case when i.event_type = 'OrderCompleted' then i.discount end) as discount
     , p.price
 FROM

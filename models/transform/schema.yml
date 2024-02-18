@@ -31,7 +31,7 @@ models:
             description: "Total orders placed by the user"
 
     - name: transaction_journey
-      description: "Transaction Journey"
+      description: "Transaction Journeys"
       columns:
         - name: item_id
           description: "Unique ID of the product. Not NULL column"
@@ -87,7 +87,6 @@ models:
 
 sources:
   - name: dbt_biengineer
-    #database: iconic-interview-20240213
     schema: dbt_biengineer  
     tables:
       - name: stg_interactions
