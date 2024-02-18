@@ -100,4 +100,5 @@ Num | Detail | Further actions
 
 ### Dashboard insights
 1. The highest discrepency in transition rates between product groupings is seen within the ProductView -> ProductAdd transition rate, namely in that Furniture, Seasonal & Jewelry products experience double the transition rate compared to Instruments & Books
+
 Did not succeed in finding other key callouts in time.
