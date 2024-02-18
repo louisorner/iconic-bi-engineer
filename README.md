@@ -14,7 +14,7 @@ Num | Item | Detail
 
 1. Which event has low transition rate and can you let us know the transition rate across each of the events?
 
-The movement from ProductAdd events to Cart Viewed events has the lowest transition rate.
+The movement from ProductAdd events to Cart Viewed events has the lowest transition rate at 15%
 
 ```
 select 
