@@ -9,13 +9,9 @@ SELECT
     , category
     , style
     , description
-    -- assumption of prices being included incorrectly
-    , abs(price) as price
+    , price
     , image
     , gender_affinity
-    , case
-        when current_stock < 0 then 0
-        else current_stock
-        end
-    as current_stock
+    , current_stock
 FROM {{ source('biengineer', 'raw-products')}}
+WHERE price < 0 or current_stock < 0
