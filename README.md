@@ -5,7 +5,7 @@ Num | Item | Detail
 ---|---|---
 1 | Data Gathering | <ul><li>Zip file was extracted and saved in GCP Cloud Storage</li><li>Created datasets and raw tables in BigQuery from these extracts</li><li>TODO: Create python script to directly point to zip on GitHub and extract filed into Cloud Storage, run using Cloud Run/Function</li></ul>
 2 | Data Cleaning | See info below on Risks, Issues, Assumptions
-3 | Data Transformation | <ul><li>DBT was used to create models to transform raw datasets into staging tables and transforms these into further views</li><li></li></ul>
+3 | Data Transformation | <ul><li>DBT was used to create models to transform raw datasets into staging tables and transforms these into further views</li><li>Further analysis should be done to optimise the session entity of the modeling.</li></ul>
 4 | Data Analysis | See below on analysis
 5 | Data Visualisation | See attached PowerBI dashboard screenshots
 
