@@ -37,10 +37,10 @@ select
     sum(case when checkout_started is not null and product_added is not null and order_completed is null then 1 end)/sum(case when checkout_started is not null then 1 end) as cart_abndnd_pct
 from `iconic-interview-20240213.dbt_biengineer.transaction_journey``
 ;
+```
 
 The cart abandonment rate is rounded to 50%
 
-```
 Row | cart_abndnd_pct
 ---|---
 1 | 0.49995701882575
