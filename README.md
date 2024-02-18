@@ -7,7 +7,7 @@ Num | Item | Detail
 2 | Data Cleaning | See info below on Risks, Issues, Assumptions
 3 | Data Transformation | <ul><li>DBT was used to create models to transform raw datasets into staging tables and transforms these into further views</li><li></li></ul>
 4 | Data Analysis | See below on analysis
-5 | Data Visualisation | See 
+5 | Data Visualisation | See attached PowerBI dashboard screenshots
 
 
 ### Analysis
