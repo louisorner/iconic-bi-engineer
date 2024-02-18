@@ -7,7 +7,7 @@ Num | Item | Detail
 2 | Data Cleaning | See info below on Risks, Issues, Assumptions
 3 | Data Transformation | <ul><li>DBT was used to create models to transform raw datasets into staging tables and transforms these into further views</li><li>Further analysis should be done to optimise the session entity of the modeling.</li></ul>
 4 | Data Analysis | See below on analysis
-5 | Data Visualisation | See attached PowerBI dashboard screenshots
+5 | Data Visualisation | See attached images PowerBI dashboard screenshots, and below for insights found
 
 
 ### Analysis
@@ -98,3 +98,6 @@ Num | Detail | Further actions
 5 | Two equal events cannot take place at the same second by the same user on the same product. |
 6 | Each user only has one address. The field is plural and uses a list of json string, but assuming for this exercise there is only one address per user. |
 
+### Dashboard insights
+1. The highest discrepency in transition rates between product groupings is seen within the ProductView -> ProductAdd transition rate, namely in that Furniture, Seasonal & Jewelry products experience double the transition rate compared to Instruments & Books
+Did not succeed in finding other key callouts in time.
