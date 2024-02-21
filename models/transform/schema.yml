@@ -29,6 +29,8 @@ models:
             description: "Zipcode information of the user - obtained from the addresses column in the users.csv file"
           - name: total_orders
             description: "Total orders placed by the user"
+          - name: first_order_completion
+            description: "If applicable, the first datetime the user has completed an order"
 
     - name: transaction_journey
       description: "Transaction Journeys"
