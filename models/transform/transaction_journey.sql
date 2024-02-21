@@ -27,7 +27,8 @@ FROM int_time_elapsed
     int_sessions
 )
 SELECT
-    i.item_id
+    i.session_id
+    , i.item_id
     , i.user_id
     , p.name as product_name
     , p.category as product_category
