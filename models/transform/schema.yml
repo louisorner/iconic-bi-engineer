@@ -33,6 +33,10 @@ models:
     - name: transaction_journey
       description: "Transaction Journeys"
       columns:
+        - name: session_id
+          description: "Session_ID of the user's interaction with a given product. Not NULL column"
+          constraints:
+            - type: not_null
         - name: item_id
           description: "Unique ID of the product. Not NULL column"
           constraints:
