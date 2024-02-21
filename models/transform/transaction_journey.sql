@@ -12,8 +12,19 @@ SELECT item_id
     , event_type
     , discount
     , timestamp
-    , 1 + SUM(IF(time_elapsed > 60, 1, 0)) over (partition by user_id, item_id order by timestamp ) as session_id
+    , cast(user_id as string) || '-' || item_id || '-' ||cast(1 + SUM(IF(time_elapsed > 60, 1, 0)) over (partition by user_id, item_id order by timestamp ) as string) as session_id
 FROM int_time_elapsed
+), int_sessions_discount_ordered as (
+  SELECT
+    item_id
+    , user_id
+    , session_id
+    , event_type
+    , timestamp
+    , LAST_VALUE(discount) OVER (PARTITION BY session_id order by timestamp asc
+    ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) as discount
+  FROM
+    int_sessions
 )
 SELECT
     i.item_id
@@ -25,8 +36,7 @@ SELECT
     , MAX(case when i.event_type = 'CartViewed' then i.timestamp end) as cart_viewed
     , MAX(case when i.event_type = 'CheckoutStarted' then i.timestamp end) as checkout_started
     , MAX(case when i.event_type = 'OrderCompleted' then i.timestamp end) as order_completed
-    -- TODO fix discount calc to refer to the highest event in hierarchy
-    , MAX(case when i.event_type = 'OrderCompleted' then i.discount end) as discount
+    , i.discount
     , p.price
 FROM
     int_sessions i
@@ -38,6 +48,7 @@ GROUP BY
     , p.name
     , p.category
     , p.price
+    , i.discount
 
 
 
