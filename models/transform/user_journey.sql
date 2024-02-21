@@ -10,6 +10,7 @@ SELECT
     , u.state
     , u.zipcode
     , SUM(case when i.event_type = 'OrderCompleted' then 1 else 0 end) as total_orders
+    , MIN(case when i.event_type = 'OrderCompleted' then i.timestamp end) as first_order_completion
 FROM {{ ref('stg_users')}} u
 LEFT JOIN {{ ref('stg_interactions')}} i on u.id = i.user_id
 GROUP BY
